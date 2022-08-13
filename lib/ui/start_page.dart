@@ -65,7 +65,19 @@ class PasswordTypeChoice extends StatelessWidget {
               ],
             ),
           ),
-          Expanded(flex: 3, child: Container())
+          Expanded(
+            flex: 3,
+            child: Center(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const <Widget>[
+                  Text("Light"),
+                  ChangeThemeButton(),
+                  Text("Dark"),
+                ],
+              ),
+            ),
+          )
         ],
       ),
     );

@@ -4,19 +4,21 @@ class Themes {
   static final ThemeData lightTheme = ThemeData(
     scaffoldBackgroundColor: Colors.white,
     brightness: Brightness.light,
-    elevatedButtonTheme: _elevatedButtonTheme,
+    elevatedButtonTheme: _elevatedButtonLightTheme,
     sliderTheme: _sliderTheme,
     checkboxTheme: _checkboxTheme,
     switchTheme: _switchTheme,
+    textTheme: const TextTheme().apply(bodyColor: Colors.black),
   );
 
   static final ThemeData darkTheme = ThemeData(
     scaffoldBackgroundColor: Colors.grey[900],
     brightness: Brightness.dark,
-    elevatedButtonTheme: _elevatedButtonTheme,
+    elevatedButtonTheme: _elevatedButtonDarkTheme,
     sliderTheme: _sliderTheme,
     checkboxTheme: _checkboxTheme,
     switchTheme: _switchTheme,
+    textTheme: const TextTheme().apply(bodyColor: Colors.white),
   );
 
   static final _sliderTheme = SliderThemeData(
@@ -28,10 +30,22 @@ class Themes {
     inactiveTickMarkColor: Colors.lightGreen[200],
   );
 
-  static final _elevatedButtonTheme = ElevatedButtonThemeData(
+  static final _elevatedButtonLightTheme = ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
       elevation: 1.0,
       primary: Colors.lightGreen,
+      onPrimary: Colors.black,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(5.0),
+      ),
+    ),
+  );
+
+  static final _elevatedButtonDarkTheme = ElevatedButtonThemeData(
+    style: ElevatedButton.styleFrom(
+      elevation: 1.0,
+      primary: Colors.lightGreen,
+      onPrimary: Colors.white,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(5.0),
       ),

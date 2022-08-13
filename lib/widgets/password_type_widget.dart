@@ -5,7 +5,9 @@ class PasswordTypeWidget extends StatelessWidget {
   final String content;
   final VoidCallback onTap;
 
-  const PasswordTypeWidget({Key? key, required this.content, required this.onTap}) : super(key: key);
+  const PasswordTypeWidget(
+      {Key? key, required this.content, required this.onTap})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

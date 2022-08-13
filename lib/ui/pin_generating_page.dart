@@ -19,16 +19,25 @@ class _PinGeneratingPageState extends State<PinGeneratingPage> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Container(
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.lightGreen),
-              borderRadius: BorderRadius.circular(10.0),
+          Padding(
+            padding: EdgeInsets.symmetric(
+              vertical: 10.h,
+              horizontal: 10.w,
             ),
-            padding: const EdgeInsets.all(30.0),
-            child: Text(
-              pinCode,
-              style: const TextStyle(
-                fontSize: 36.0,
+            child: Container(
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.lightGreen),
+                borderRadius: BorderRadius.circular(10.0),
+              ),
+              padding: EdgeInsets.symmetric(
+                vertical: 30.h,
+                horizontal: 30.w,
+              ),
+              child: Text(
+                pinCode,
+                style: const TextStyle(
+                  fontSize: 36.0,
+                ),
               ),
             ),
           ),

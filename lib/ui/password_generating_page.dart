@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:password_generator/const/symbols.dart';
 import 'package:password_generator/generators/password_generator.dart';
 
@@ -27,13 +28,19 @@ class _PasswordGeneratingPageState extends State<PasswordGeneratingPage> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Padding(
-            padding: const EdgeInsets.all(10.0),
+            padding: EdgeInsets.symmetric(
+              vertical: 10.h,
+              horizontal: 10.w,
+            ),
             child: Container(
               decoration: BoxDecoration(
                 border: Border.all(color: Colors.lightGreen),
                 borderRadius: BorderRadius.circular(10.0),
               ),
-              padding: const EdgeInsets.all(30.0),
+              padding: EdgeInsets.symmetric(
+                vertical: 30.h,
+                horizontal: 30.w,
+              ),
               child: Text(
                 password,
                 style: TextStyle(
