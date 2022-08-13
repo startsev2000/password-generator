@@ -17,7 +17,7 @@ class PasswordGenerator extends Generator {
       throw Exception(
           "Password should be more than 6 symbols long. Safety is your main priority!");
     }
-    if (length > 128) {
+    if (length > 32) {
       throw Exception(
           "Password length is HUUUUGE. Better generate a shorter password!");
     }
@@ -25,39 +25,45 @@ class PasswordGenerator extends Generator {
 
   @override
   String generate() {
-    List<String> symbols = List.filled(length, '0');
+    List<String> symbols = [];
 
     List<int> symbolsCount = _generateSymbolsCount();
-    for (var symbolCount in symbolsCount) {
-      for (var symbolType in symbolTypes) {
-        symbols.addAll(_generateSymbols(symbolType, symbolCount));
-      }
+
+    int type = 0;
+    for (var symbolType in symbolTypes) {
+      symbols.addAll(_generateSymbols(symbolType, symbolsCount[type]));
+      type++;
     }
 
     symbols.shuffle();
 
-    return symbols.toString();
+    String password = "";
+    for (int i = 0; i < length; i++) {
+      password += symbols[i];
+    }
+
+    return password;
   }
 
   int _generateNumber(int begin, int end) {
     if (begin > end) {
       throw Exception("Begin number is bigger than the end number");
     }
-    return begin + random.nextInt(end - begin);
+    return begin + random.nextInt(end - begin + 1);
   }
 
   List<int> _generateSymbolsCount() {
     List<int> symbolsCount = [];
     int passwordLength = length;
+    int currentSum = 0;
 
     for (int i = 0; i < symbolTypes.length - 1; i++) {
       int symbolCount = _generateNumber(
-          1, passwordLength - (passwordLength * 3) ~/ 4);
-      passwordLength -= symbolCount;
+          1, passwordLength - (symbolTypes.length - i - 1) - currentSum);
+      currentSum += symbolCount;
       symbolsCount.add(symbolCount);
     }
-    symbolsCount.add(passwordLength);
-
+    symbolsCount.add(passwordLength - currentSum);
     return symbolsCount;
   }
 
@@ -94,5 +100,4 @@ class PasswordGenerator extends Generator {
 
     return symbols;
   }
-
 }

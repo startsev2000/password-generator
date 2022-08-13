@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:password_generator/generators/pin_generator.dart';
 
 class PinGeneratingPage extends StatefulWidget {
@@ -10,7 +11,7 @@ class PinGeneratingPage extends StatefulWidget {
 
 class _PinGeneratingPageState extends State<PinGeneratingPage> {
   double _pinLength = 4;
-  String pinCode = "";
+  String pinCode = "        ";
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,22 @@ class _PinGeneratingPageState extends State<PinGeneratingPage> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Text(pinCode),
+          Container(
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.lightGreen),
+              borderRadius: BorderRadius.circular(10.0),
+            ),
+            padding: const EdgeInsets.all(30.0),
+            child: Text(
+              pinCode,
+              style: const TextStyle(
+                fontSize: 36.0,
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 30.h,
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
@@ -37,9 +53,13 @@ class _PinGeneratingPageState extends State<PinGeneratingPage> {
               ),
             ],
           ),
+          SizedBox(
+            height: 30.h,
+          ),
           ElevatedButton(
             onPressed: () {
-              PinGenerator pinGenerator = PinGenerator(length: _pinLength.round());
+              PinGenerator pinGenerator =
+                  PinGenerator(length: _pinLength.round());
               String generatedPin = pinGenerator.generate();
               setState(() {
                 pinCode = generatedPin;

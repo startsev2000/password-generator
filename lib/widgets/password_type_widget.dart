@@ -16,7 +16,7 @@ class PasswordTypeWidget extends StatelessWidget {
         },
         child: Container(
           decoration: BoxDecoration(
-            color: Colors.lightBlueAccent,
+            color: Colors.lightGreen,
             borderRadius: BorderRadius.circular(10.0),
           ),
           padding: EdgeInsets.symmetric(
@@ -24,8 +24,8 @@ class PasswordTypeWidget extends StatelessWidget {
             vertical: 50.h,
           ),
           margin: EdgeInsets.symmetric(
-            horizontal: 5.w,
-            vertical: 5.h,
+            horizontal: 10.w,
+            vertical: 10.h,
           ),
           child: Text(content),
         ),
